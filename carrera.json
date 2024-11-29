@@ -1,0 +1,73 @@
+[
+    {
+        "carrera": "kk",
+        "clave": "5",
+        "grupos": [
+            {
+                "grupo": "hol",
+                "cuatrimestre": "6",
+                "alumnos": [
+                    {
+                        "nombre": "nn",
+                        "apellido_paterno": "\u00f1\u00f1",
+                        "apellido_materno": "\u00f1",
+                        "curp": "9",
+                        "matricula": "5"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "carrera": "kkk",
+        "clave": "www",
+        "grupos": [
+            {
+                "grupo": "holaaaaaaa",
+                "cuatrimestre": "2",
+                "alumnos": [
+                    {
+                        "nombre": "jfjfjf",
+                        "apellido_paterno": "fffffffg",
+                        "apellido_materno": "ddddd",
+                        "curp": "3",
+                        "matricula": "3"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "nombre": "kaka",
+        "grupos": [
+            {
+                "grupo": "qqqq",
+                "cuatrimestre": "2a",
+                "alumnos": []
+            },
+            {
+                "grupo": "yyyy",
+                "cuatrimestre": "4",
+                "alumnos": []
+            }
+        ]
+    },
+    {
+        "nombre": "meca",
+        "grupos": [
+            {
+                "grupo": "s",
+                "cuatrimestre": "3",
+                "alumnos": [
+                    {
+                        "nom": "\u00f1o\u00f1o",
+                        "apPat": "kiko",
+                        "apMat": "popis",
+                        "id": "3",
+                        "mat": "2"
+                    }
+                ]
+            }
+        ]
+    }
+]

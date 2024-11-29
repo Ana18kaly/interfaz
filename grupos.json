@@ -1,0 +1,33 @@
+[
+    {
+        "grupo": "ww",
+        "cuatrimestre": "www",
+        "alumnos": []
+    },
+    {
+        "grupo": "eee",
+        "cuatrimestre": "w",
+        "alumnos": [
+            {
+                "nombre": "www",
+                "apellido_paterno": "s",
+                "apellido_materno": "q",
+                "curp": "2",
+                "matricula": "1"
+            }
+        ]
+    },
+    {
+        "grupo": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "cuatrimestre": "s3",
+        "alumnos": [
+            {
+                "nom": "cccc",
+                "apPat": "www",
+                "apMat": "sss",
+                "id": "34",
+                "mat": "6"
+            }
+        ]
+    }
+]

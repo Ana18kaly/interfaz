@@ -1,0 +1,130 @@
+import json
+from grupo import Grupo, ListaGrupos  # Asegúrate de importar las clases correctamente
+from alumno import Alumno  # Asegúrate de tener una clase Alumno definida en el módulo
+
+# Clase base para listas
+class Lista:
+    def __init__(self):
+        self.items = []
+
+    def agregar(self, item):
+        self.items.append(item)
+
+    def guardar_json(self, archivo):
+        with open(archivo, 'w') as file:
+            json.dump([item.to_dict() for item in self.items], file, indent=4)
+
+# Funciones CRUD para estudiantes
+def registrar_estudiante(grupo):
+    nombre = input("Nombre: ")
+    apellido_pa = input("Apellido paterno: ")
+    apellido_ma = input("Apellido materno: ")
+    curp = input("CURP: ")
+    matricula = input("Matrícula: ")
+    alumno = Alumno(nombre, apellido_pa, apellido_ma, curp, matricula)
+    grupo.agregar(alumno)
+    print("Estudiante registrado exitosamente.\n")
+
+def modificar_estudiante(grupo):
+    matricula = input("Ingrese la matrícula del estudiante a modificar: ")
+    nuevos_datos = {
+        "nombre": input("Nuevo nombre (deje vacío para no cambiar): "),
+        "apellido_pa": input("Nuevo apellido paterno (deje vacío para no cambiar): "),
+        "apellido_ma": input("Nuevo apellido materno (deje vacío para no cambiar): "),
+        "curp": input("Nuevo CURP (deje vacío para no cambiar): "),
+    }
+    if grupo.modificar(matricula, {k: v for k, v in nuevos_datos.items() if v}):
+        print("Datos del estudiante modificados exitosamente.\n")
+    else:
+        print("No se encontró un estudiante con esa matrícula.\n")
+
+def eliminar_estudiante(grupo):
+    matricula = input("Ingrese la matrícula del estudiante a eliminar: ")
+    grupo.eliminar(matricula)
+    print("Estudiante eliminado exitosamente.\n")
+
+def ver_lista_estudiantes(grupo):
+    print("Lista de estudiantes en el grupo:")
+    for alumno in grupo.listar():
+        print(alumno)
+    print()
+
+def seleccionar_grupo(grupos):
+    print("Selecciona un grupo:")
+    for idx, grupo in enumerate(grupos, 1):
+        print(f"{idx}. {grupo.nombre} - {grupo.cuatrimestre}")
+    while True:
+        try:
+            seleccion = int(input("Número del grupo: "))
+            if 1 <= seleccion <= len(grupos):
+                return grupos[seleccion - 1]
+            else:
+                print("Selección fuera de rango. Intenta de nuevo.")
+        except ValueError:
+            print("Entrada inválida. Por favor, ingresa un número.")
+
+def menu_principal():
+    while True:
+        print("\n--- Menú Principal ---")
+        print("1. Gestionar Alumnos")
+        print("2. Gestionar Grupos")
+        print("3. Gestionar Carreras")
+        print("4. Salir")
+
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == "1":
+            alumno_menu()  # Menú de alumnos (puedes definir este menú en el archivo alumno.py)
+        elif opcion == "2":
+            grupo_menu()  # Menú de grupos (puedes definir este menú en el archivo grupo.py)
+        elif opcion == "3":
+            agregar_carrera_interfaz()  # Menú de carreras (puedes definir este menú en el archivo carrera.py)
+        elif opcion == "4":
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida. Intenta nuevamente.")
+
+if __name__ == "__main__":
+    menu_principal()
+
+
+# Definición del menú para los alumnos:
+def alumno_menu():
+    grupos = [
+        Grupo(nombre="A", cuatrimestre="7mo Cuatrimestre"),
+        Grupo(nombre="B", cuatrimestre="8vo Cuatrimestre"),
+        Grupo(nombre="C", cuatrimestre="6to Cuatrimestre")
+    ]
+
+    grupo_seleccionado = seleccionar_grupo(grupos)
+    print(f"\nHas seleccionado el Grupo: {grupo_seleccionado.nombre} - {grupo_seleccionado.cuatrimestre}\n")
+
+    while True:
+        print("***** SISTEMA DE GESTIÓN DE ESTUDIANTES *****")
+        print("Seleccione una opción:")
+        print("1. Registrar nuevo estudiante")
+        print("2. Modificar datos de estudiante")
+        print("3. Dar de baja estudiante")
+        print("4. Ver lista de estudiantes")
+        print("5. Cambiar de grupo")
+        print("6. Finalizar")
+
+        opcion = input("Opción: ")
+        
+        if opcion == "1":
+            registrar_estudiante(grupo_seleccionado)
+        elif opcion == "2":
+            modificar_estudiante(grupo_seleccionado)
+        elif opcion == "3":
+            eliminar_estudiante(grupo_seleccionado)
+        elif opcion == "4":
+            ver_lista_estudiantes(grupo_seleccionado)
+        elif opcion == "5":
+            grupo_seleccionado = seleccionar_grupo(grupos)
+            print(f"\nHas cambiado al Grupo: {grupo_seleccionado.nombre} - {grupo_seleccionado.cuatrimestre}\n")
+        elif opcion == "6":
+            print("Finalizando...")
+            break
+        else:
+            print("Opción no válida, intente de nuevo.\n")

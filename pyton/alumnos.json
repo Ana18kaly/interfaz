@@ -1,0 +1,16 @@
+[
+    {
+        "nombre": "Juan",
+        "apellido_paterno": "P\u00e9rez",
+        "apellido_materno": "G\u00f3mez",
+        "curp": "JUAN123456",
+        "matricula": "12345678"
+    },
+    {
+        "nombre": "Mar\u00eda",
+        "apellido_paterno": "L\u00f3pez",
+        "apellido_materno": "Hern\u00e1ndez",
+        "curp": "MARIA654321",
+        "matricula": "87654321"
+    }
+]
